@@ -1,3 +1,3 @@
-Data source: https://www.gov.pl/web/koronawirus/wykaz-zarazen-koronawirusem-sars-cov-2. <br />
-Graph: https://piotrek124-1.github.io/Wykres-liczby-zakazen/ <br />
-The graph is for illustrative purposes only, the data may be incorrectly entered.
+Źródło danych: https://www.gov.pl/web/koronawirus/wykaz-zarazen-koronawirusem-sars-cov-2. <br />
+Wykres: https://piotrek124-1.github.io/Wykres-liczby-zakazen/ <br />
+Wykres jest wyłącznie w celach demonstracyjnych, przedstawione na nim dane mogą być niepoprawne.
