@@ -1,7 +1,7 @@
 ---
 output: html_notebook
 ---
-```{r, message = FALSE}
+```{r, message = FALSE, echo = FALSE}
 library(plotly)
 library(crosstalk)
 library(ggplot2)
