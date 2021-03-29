@@ -1,16 +1,7 @@
 library(plotly)
 library(crosstalk)
 
-files <- list.files("dataCSV")
-i <- 0
-frame = data.frame()
-for (i in files) {
-  csv <- gsub(" ", "", paste("dataCSV\\", i))
-  data <- read.csv(csv, sep = ";", encoding = "Windows-1250")
-  df <- data.frame(data)
-  frame <- plyr::rbind.fill(frame, df)
-}
-f <- highlight_key(frame)
+f <- highlight_key(read.csv("plotData\\dataFrame.csv"))
 
 bscols(widths = 10,
        filter_select(id = "powiat_miasto", label = "Powiat", f, ~ powiat_miasto),
