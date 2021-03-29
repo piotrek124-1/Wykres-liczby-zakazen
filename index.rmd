@@ -1,12 +1,13 @@
 ---
 output: html_notebook
 ---
-```{r}
+```{r, message = FALSE}
 library(plotly)
 library(crosstalk)
-
+library(ggplot2)
 files <- list.files("dataCSV")
 i <- 0
+options(warn = -1)
 frame = data.frame()
 for (i in files) {
   csv <- gsub(" ", "", paste("dataCSV\\", i))
