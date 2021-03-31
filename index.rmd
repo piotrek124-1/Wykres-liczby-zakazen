@@ -1,0 +1,19 @@
+---
+output:
+html_notebook:
+code_folding: hide
+---
+```{r, message = FALSE, echo = FALSE}
+library(plotly)
+library(crosstalk)
+
+options(warn = -1)
+frame <- read.csv("plotData\\casesUTF-8.csv", fileEncoding = "UTF-8")
+f <- highlight_key(frame)
+
+bscols(widths = 20,
+       filter_select(id = "powiat_miasto", label = "Powiat", f, ~ powiat_miasto),
+       plot_ly(data = f, x = frame$stan_rekordu_na, y = frame$liczba_przypadkow, type = 'scatter', mode = 'lines', color = frame$powiat_miasto) %>%
+               layout(title = "Liczba zakażen Covid-19", xaxis = list(title = "data"), yaxis = list(title = "liczba przypadków"))
+)
+```
