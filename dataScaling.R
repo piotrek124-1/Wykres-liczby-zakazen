@@ -7,4 +7,6 @@ for (i in files) {
   df <- data.frame(data)
   frame <- plyr::rbind.fill(frame, df)
 }
-write.csv(frame, file = "plotData\\dataFrame.csv")
+f <- list(liczba_przypadkow = frame$liczba_przypadkow, stan_rekordu_na = frame$stan_rekordu_na, powiat_miasto = frame$powiat_miasto)
+write.csv(frame, file = "plotData\\completeDataUTF-8.csv", fileEncoding = "UTF-8")
+write.csv(f, file = "plotData\\casesUTF-8.csv", fileEncoding = "UTF-8")
