@@ -1,0 +1,6 @@
+navbar:
+  left:
+    - text: "Wykres"
+      href: index.html
+    - text: "Wykres z średnią 7 dniową"
+      href: avg.html
