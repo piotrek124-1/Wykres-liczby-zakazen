@@ -1,0 +1,20 @@
+---
+output:
+html_notebook:
+code_folding: hide
+title: "% pozytywnych testów"
+---
+```{r, message = FALSE, echo = FALSE}
+library(plotly)
+library(crosstalk)
+options(warn = -1)
+frame <- read.csv("plotData\\completeDataUTF-8.csv", fileEncoding = "UTF-8")
+f <- highlight_key(frame)
+caseTestProcentage <- frame$liczba_testow_z_wynikiem_pozytywnym / frame$liczba_wykonanych_testow * 100
+bscols(widths = 20,
+       filter_select(id = "powiat_miasto", label = "Powiat", f, ~ powiat_miasto),
+       plot_ly(data = f, x = frame$stan_rekordu_na, y = caseTestProcentage, type = 'scatter', mode = 'lines', color = frame$powiat_miasto) %>%
+         layout(title = "% pozytwynych wyników", xaxis = list(title = "data"), yaxis = list(title = "% pozytwynych wyników"))
+)
+```
+<div>źródło danych: https://www.gov.pl/</div>

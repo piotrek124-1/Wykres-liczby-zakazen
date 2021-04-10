@@ -4,3 +4,5 @@ navbar:
       href: index.html
     - text: "Wykres z średnią 7 dniową"
       href: avg.html
+    - text: "% pozytywnych wyników"
+      href: procent.html
