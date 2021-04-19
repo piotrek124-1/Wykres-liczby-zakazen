@@ -1,8 +1,14 @@
 navbar:
   left:
-    - text: "Wykres"
-      href: index.html
-    - text: "Wykres z średnią 7 dniową"
-      href: avg.html
-    - text: "% pozytywnych wyników"
-      href: procent.html
+    - text: "Dane powiatowe"
+      menu:
+        - text: "Dzienna liczba zakażeń"
+          href: index.html
+        - text: "Wykres z średnią 7 dniową"
+          href: avg.html
+        - text: "% pozytywnych wyników"
+          href: procent.html
+    - text: "Dane sumaryczne"
+      menu:
+        - text: "Sumaryczna liczba zakażeń"
+          href: sum.html
