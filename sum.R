@@ -21,15 +21,16 @@ date[1] <- sort(date$sum)
 date[2] <- sort(as.character(date$stan_rekordu_na))
 date <- mutate(.data = date, mean = rollmean(date$sum, k = 7, na.pad = T))
 date$log <- log(date$sum)
+date$log <- 6940.1154255 * exp(date$sum * 4.28070980205 * 10^(-6))
 date$logMean <- rollmean(date$log, k = 7, na.pad = T)
 update <- list(
   list(
     x = -0.07,
     buttons = list(
-      list(method = "restyle", args = list("visible", list(TRUE, FALSE, FALSE, FALSE)), label = "Linowy"),
-      list(method = "restyle", args = list("visible", list(FALSE, TRUE, FALSE, FALSE)), label = "Średnia 7 dniowa"),
-      list(method = "restyle", args = list("visible", list(FALSE, FALSE, TRUE, FALSE)), label = "Logarytmiczny"),
-      list(method = "restyle", args = list("visible", list(FALSE, FALSE, FALSE, TRUE)), label = "Uśredniony logarytmiczny")
+      list(method = "restyle", args = list("visible", list(TRUE, FALSE, FALSE, FALSE), list(yaxis = list(type = "linear"))), label = "Linowy"),
+      list(method = "restyle", args = list("visible", list(FALSE, TRUE, FALSE, FALSE), list(yaxis = list(type = "linear"))), label = "Średnia 7 dniowa (beta)"),
+      list(method = "restyle", args = list("visible", list(FALSE, FALSE, TRUE, FALSE), list(yaxis = list(type = "log"))), label = "Logarytmiczny (beta)"),
+      list(method = "restyle", args = list("visible", list(FALSE, FALSE, FALSE, TRUE), list(yaxis = list(type = "log"))), label = "Uśredniony logarytmiczny (beta)")
     )
   )
 )
@@ -38,4 +39,5 @@ plot_ly(data = date, x = date$stan_rekordu_na) %>%
   add_lines(y = date$mean, visible = F, name = "Średnia 7 dniowa", showlegend = FALSE, line = list(color = 'rgb(0, 128, 230)')) %>%
   add_lines(y = date$log, visible = F, name = "Logarytmiczny", showlegend = FALSE, line = list(color = 'rgb(0, 128, 230)')) %>%
   add_lines(y = date$logMean, visible = F, name = "Logarytmiczny 2", showlegend = FALSE, line = list(color = 'rgb(0, 128, 230)')) %>%
-  layout(title = "Liczba zakażen Covid-19", xaxis = list(title = "data"), yaxis = list(title = "liczba przypadków"), width = 940, height = 400, updatemenus = update)
+  layout(title = "Liczba zakażen Covid-19", xaxis = list(title = "data"), width = 940, height = 400, updatemenus = update)
+
