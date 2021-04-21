@@ -23,6 +23,8 @@ date <- mutate(.data = date, mean = rollmean(date$sum, k = 7, na.pad = T))
 date$log <- log(date$sum)
 date$log <- 6940.1154255 * exp(date$sum * 4.28070980205 * 10^(-6))
 date$logMean <- rollmean(date$log, k = 7, na.pad = T)
+date$stan_rekordu_srednia <- as.Date(date$stan_rekordu_na) + 3
+date$stan_rekordu_srednia <- format(date$stan_rekordu_srednia, "%Y-%m-%d")
 update <- list(
   list(
     x = -0.07,
@@ -36,8 +38,8 @@ update <- list(
 )
 plot_ly(data = date, x = date$stan_rekordu_na) %>%
   add_lines(y = date$sum, name = "Linowy", showlegend = FALSE, line = list(color = 'rgb(0, 128, 230)')) %>%
-  add_lines(y = date$mean, visible = F, name = "Średnia 7 dniowa", showlegend = FALSE, line = list(color = 'rgb(0, 128, 230)')) %>%
-  add_lines(y = date$log, visible = F, name = "Logarytmiczny", showlegend = FALSE, line = list(color = 'rgb(0, 128, 230)')) %>%
-  add_lines(y = date$logMean, visible = F, name = "Logarytmiczny 2", showlegend = FALSE, line = list(color = 'rgb(0, 128, 230)')) %>%
+  add_lines(x = date$stan_rekordu_srednia, y = date$mean, visible = F, name = "Średnia 7 dniowa", showlegend = FALSE, line = list(color = 'rgb(0, 128, 230)')) %>%
+  add_lines(x = date$stan_rekordu_na, y = date$log, visible = F, name = "Logarytmiczny", showlegend = FALSE, line = list(color = 'rgb(0, 128, 230)')) %>%
+  add_lines(x = date$stan_rekordu_srednia, y = date$logMean, visible = F, name = "Logarytmiczny 2", showlegend = FALSE, line = list(color = 'rgb(0, 128, 230)')) %>%
   layout(title = "Liczba zakażen Covid-19", xaxis = list(title = "data"), width = 940, height = 400, updatemenus = update)
 
